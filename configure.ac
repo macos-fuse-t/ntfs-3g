@@ -319,14 +319,6 @@ elif test "${with_fuse}" = "external"; then
 	# Libraries often install their metadata .pc files in directories
 	# not searched by pkg-config. Let's workaround this. 
 	export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:/lib/pkgconfig:/usr/lib/pkgconfig:/opt/gnome/lib/pkgconfig:/usr/share/pkgconfig:/usr/local/lib/pkgconfig:$prefix/lib/pkgconfig:/opt/gnome/share/pkgconfig:/usr/local/share/pkgconfig
-	PKG_CHECK_MODULES(
-		[FUSE_MODULE],
-		[fuse >= 2.6.0],
-		,
-		[
-			AC_MSG_ERROR([FUSE >= 2.6.0 was not found. Either older FUSE is still present, or FUSE is not fully installed (e.g. fuse, libfuse, libfuse2, libfuse-dev, etc packages). Source code: http://fuse.sf.net])
-		]
-	)
 	FUSE_LIB_PATH=`$PKG_CONFIG --libs-only-L fuse | sed -e 's,/[/]*,/,g' -e 's,[ ]*$,,'`
 fi
 

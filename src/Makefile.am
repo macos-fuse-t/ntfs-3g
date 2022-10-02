@@ -7,8 +7,8 @@ if FUSE_INTERNAL
 FUSE_CFLAGS = -I$(top_srcdir)/include/fuse-lite
 FUSE_LIBS   = $(top_builddir)/libfuse-lite/libfuse-lite.la
 else
-FUSE_CFLAGS = $(FUSE_MODULE_CFLAGS)
-FUSE_LIBS   = $(FUSE_MODULE_LIBS)
+FUSE_CFLAGS = -I/usr/local/include/fuse -D_FILE_OFFSET_BITS=64
+FUSE_LIBS   = -lfuse-t
 endif
 
 if !DISABLE_PLUGINS
